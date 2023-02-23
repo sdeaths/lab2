@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">lab2</string>
+    <string name="authorization">Авторизация</string>
+    <string name="phone">Phone</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="back">Back</string>
 </resources>
