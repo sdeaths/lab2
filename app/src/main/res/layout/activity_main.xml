@@ -81,9 +81,9 @@
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>
-
+<!--        android:onClick="logInClick"-->
         <Button
-            android:onClick="logInClick"
+
             android:id="@+id/button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
