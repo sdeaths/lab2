@@ -51,15 +51,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:startIconDrawable="@drawable/ic_baseline_phone_24"
-                android:layout_marginTop="@dimen/margins">
+                android:layout_marginTop="@dimen/margins"
+                app:prefixText="+7"
+                app:counterMaxLength="10"
+                >
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
                     android:hint="@string/phone"
                     android:inputType="number"
-                    />
+                    android:maxLength="10"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -71,6 +75,7 @@
                 >
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/white"
