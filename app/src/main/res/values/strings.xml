@@ -5,4 +5,11 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="back">Back</string>
+    <string name="shop">START SHOPPING</string>
+    <string name="reg">Register</string>
+    <string name="confirm">Confirm password</string>
+    <string name="name">Name Surname</string>
+    <string name="noAcc">Нет аккаунта? <b>Зарегестрируйтесь</b></string>
+    <string name="registration">Уже есть аккаунт? <b>Войдите</b></string>
+    <string name="welcome">Магазин вашей мечты. Здесь Вы найдете всё, что захотите</string>
 </resources>

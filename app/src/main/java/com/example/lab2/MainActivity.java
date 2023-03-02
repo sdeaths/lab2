@@ -17,37 +17,37 @@ import android.widget.TextView;
 
 import com.example.lab2.databinding.ActivityMainBinding;
 
+
 public class MainActivity extends AppCompatActivity {
-    private ActivityMainBinding binding;
-    ActivityResultLauncher<Intent> startForResult = registerForActivityResult(
-            new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-                @Override
-                public void onActivityResult(ActivityResult result) {
-                    if (result != null && result.getResultCode() == RESULT_OK) {
-                        if (result.getData() != null && result.getData().getStringExtra(UserActivity.KEY) != null) {
-                            binding.textPhone.setText(result.getData().getStringExtra(UserActivity.KEY));
-                            binding.password.setText("");
-                        }
-                    }
-                }
-            });
+    //    ActivityResultLauncher<Intent> startForResult = registerForActivityResult(
+//            new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
+//                @Override
+//                public void onActivityResult(ActivityResult result) {
+//                    if (result != null && result.getResultCode() == RESULT_OK) {
+//                        if (result.getData() != null && result.getData().getStringExtra(UserActivity.KEY) != null) {
+//                            binding.textPhone.setText(result.getData().getStringExtra(UserActivity.KEY));
+//                            binding.password.setText("");
+//                        }
+//                    }
+//                }
+//            });
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-//        TextView textAuthorization = findViewById(R.id.textAuthorization);
-        binding.textAuthorization.setText(R.string.authorization);
-//        ImageView imageView = findViewById(R.id.imageView);
-        binding.imageView.setImageResource(R.drawable.logo);
-//        Button button = findViewById(R.id.button);
-        binding.button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("onClick", "button clicked");
-                startForResult.launch(UserActivity.newUsrActivity(MainActivity.this, binding.textPhone.getText().toString()));
-            }
-        });
+        setContentView(R.layout.activity_main);
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .setReorderingAllowed(true)
+                    .add(R.id.main_container, WelcomeScreenFragment.class, null)
+                    .commit();
+        }
+//        binding.button.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Log.d("onClick", "button clicked");
+//                startForResult.launch(UserActivity.newUsrActivity(MainActivity.this, binding.textPhone.getText().toString()));
+//            }
+//        });
 
     }
 
