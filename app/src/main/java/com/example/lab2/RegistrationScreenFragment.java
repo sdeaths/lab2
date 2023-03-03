@@ -32,5 +32,15 @@ public class RegistrationScreenFragment extends Fragment {
                         .commit();
             }
         });
+        binding.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String Phone = binding.textPhone.getText().toString();
+                String Password = binding.password.getText().toString();
+                requireActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.main_container, LoginFragment.newInstance(Phone, Password), null)
+                        .commit();
+            }
+        });
     }
 }
