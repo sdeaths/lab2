@@ -1,18 +1,20 @@
 <resources>
     <string name="app_name">lab2</string>
     <string name="authorization">Авторизация</string>
-    <string name="phone">Phone</string>
-    <string name="password">Password</string>
-    <string name="login">Login</string>
-    <string name="back">Back</string>
+    <string name="phone">Телефон</string>
+    <string name="password">Пароль</string>
+    <string name="login">Войти</string>
+    <string name="back">Назад</string>
     <string name="shop">START SHOPPING</string>
-    <string name="reg">Register</string>
-    <string name="confirm">Confirm password</string>
-    <string name="name">Name Surname</string>
+    <string name="reg">Зарегистрироваться</string>
+    <string name="confirm">Подтвердите пароль</string>
+    <string name="name">Имя Фамилия</string>
     <string name="noAcc">Нет аккаунта? <b>Зарегестрируйтесь</b></string>
     <string name="registration">Уже есть аккаунт? <b>Войдите</b></string>
     <string name="welcome">Магазин вашей мечты. Здесь Вы найдете всё, что захотите</string>
     <string name="admin"><b>Войти как администратор</b></string>
-    <string name="admName">Name</string>
-    <string name="admKey">Key</string>
+    <string name="admName">Имя</string>
+    <string name="admKey">Ключ</string>
+    <string name="adm">Администратор</string>
+    <string name="profile">Профиль</string>
 </resources>
