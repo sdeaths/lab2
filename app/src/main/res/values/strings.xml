@@ -12,4 +12,7 @@
     <string name="noAcc">Нет аккаунта? <b>Зарегестрируйтесь</b></string>
     <string name="registration">Уже есть аккаунт? <b>Войдите</b></string>
     <string name="welcome">Магазин вашей мечты. Здесь Вы найдете всё, что захотите</string>
+    <string name="admin"><b>Войти как администратор</b></string>
+    <string name="admName">Name</string>
+    <string name="admKey">Key</string>
 </resources>
