@@ -42,7 +42,8 @@ public class LoginFragment extends Fragment {
             public void onClick(View v) {
                 String Phone = binding.textPhone.getText().toString();
                 requireActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.main_container, UserFragment.newInstance(Phone))
+//                        .replace(R.id.main_container, UserFragment.newInstance(Phone))
+                        .replace(R.id.main_container, new UserProfileFragment())
                         .addToBackStack(null)
                         .commit();
             }
@@ -53,6 +54,15 @@ public class LoginFragment extends Fragment {
                 binding.password.setText("");
                 String userLogin = result.getString(KEYT);
                 binding.textPhone.setText(userLogin);
+            }
+        });
+        binding.adm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                requireActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.main_container, new AdministratorLoginFragment())
+                        .addToBackStack(null)
+                        .commit();
             }
         });
     }
