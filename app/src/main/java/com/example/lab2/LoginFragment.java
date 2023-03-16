@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
+import androidx.navigation.Navigation;
 
 import com.example.lab2.databinding.FragmentLoginBinding;
 
@@ -32,20 +33,13 @@ public class LoginFragment extends Fragment {
         binding.acc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                requireActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.main_container, RegistrationScreenFragment.class, null)
-                        .commit();
+                Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_registrationScreenFragment);
             }
         });
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String Phone = binding.textPhone.getText().toString();
-                requireActivity().getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.main_container, UserFragment.newInstance(Phone))
-                        .replace(R.id.main_container, new UserProfileFragment())
-                        .addToBackStack(null)
-                        .commit();
+                Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_userProfileFragment);
             }
         });
         getParentFragmentManager().setFragmentResultListener(KEY_RESULT, this, new FragmentResultListener() {
@@ -59,10 +53,7 @@ public class LoginFragment extends Fragment {
         binding.adm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                requireActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.main_container, new AdministratorLoginFragment())
-                        .addToBackStack(null)
-                        .commit();
+                Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_administratorLoginFragment);
             }
         });
     }
