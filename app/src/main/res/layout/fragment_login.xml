@@ -28,7 +28,6 @@
             android:id="@+id/textAuthorization"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginTop="@dimen/margins"
             android:text="@string/authorization"
             android:textColor="@color/white"
@@ -91,7 +90,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginBottom="@dimen/margins"
+            android:layout_marginBottom="42dp"
             android:background="@drawable/rounded_button"
             android:text="@string/login"
             android:textAllCaps="false"
@@ -116,5 +115,19 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/adm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/admin"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/acc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+        </TextView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
