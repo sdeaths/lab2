@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.example.lab2.databinding.FragmentAdministratorLoginBinding;
 
@@ -27,10 +28,7 @@ public class AdministratorLoginFragment extends Fragment {
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                requireActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.main_container, new AdministratorProfileFragment())
-                        .addToBackStack(null)
-                        .commit();
+                Navigation.findNavController(v).navigate(R.id.action_administratorLoginFragment_to_administratorProfileFragment);
             }
         });
     }

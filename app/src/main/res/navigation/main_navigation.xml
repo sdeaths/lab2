@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/welcomeScreenFragment">
+
+    <fragment
+        android:id="@+id/welcomeScreenFragment"
+        android:name="com.example.lab2.WelcomeScreenFragment"
+        android:label="WelcomeScreenFragment"
+        tools:layout="@layout/fragment_welcome_screen">
+        <action
+            android:id="@+id/action_welcomeScreenFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.lab2.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_userProfileFragment"
+            app:destination="@id/userProfileFragment"
+            app:popUpTo="@id/loginFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_administratorLoginFragment"
+            app:destination="@id/administratorLoginFragment"
+            app:popUpTo="@id/loginFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_registrationScreenFragment"
+            app:destination="@id/registrationScreenFragment"
+            app:popUpTo="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.example.lab2.UserProfileFragment"
+        android:label="UserProfileFragment"
+        tools:layout="@layout/fragment_user_profile"/>
+    <fragment
+        android:id="@+id/administratorLoginFragment"
+        android:name="com.example.lab2.AdministratorLoginFragment"
+        android:label="AdministratorLoginFragment"
+        tools:layout="@layout/fragment_administrator_login">
+        <action
+            android:id="@+id/action_administratorLoginFragment_to_administratorProfileFragment"
+            app:destination="@id/administratorProfileFragment"
+            app:popUpTo="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/administratorProfileFragment"
+        android:name="com.example.lab2.AdministratorProfileFragment"
+        android:label="AdministratorProfileFragment"
+        tools:layout="@layout/fragment_administrator_profile"/>
+    <fragment
+        android:id="@+id/registrationScreenFragment"
+        android:name="com.example.lab2.RegistrationScreenFragment"
+        android:label="RegistrationScreenFragment"
+        tools:layout="@layout/fragment_registration_screen">
+        <action
+            android:id="@+id/action_registrationScreenFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/loginFragment" />
+    </fragment>
+</navigation>
