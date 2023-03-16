@@ -36,7 +36,10 @@ public class RegistrationScreenFragment extends Fragment {
             public void onClick(View v) {
                 String Phone = binding.textPhone.getText().toString();
                 String Password = binding.password.getText().toString();
-                Navigation.findNavController(v).navigate(R.id.action_registrationScreenFragment_to_loginFragment);
+                Bundle bundle = new Bundle();
+                bundle.putString(LoginFragment.KEYT, Phone);
+                bundle.putString(LoginFragment.KEYP, Password);
+                Navigation.findNavController(v).navigate(R.id.action_registrationScreenFragment_to_loginFragment, bundle);
             }
         });
     }
