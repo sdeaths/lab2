@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.example.lab2.databinding.FragmentWelcomeScreenBinding;
 
@@ -27,10 +28,11 @@ public class WelcomeScreenFragment extends Fragment {
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                requireActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.main_container, LoginFragment.class, null)
-                        .addToBackStack(null)
-                        .commit();
+//                requireActivity().getSupportFragmentManager().beginTransaction()
+//                        .replace(R.id.main_container, LoginFragment.class, null)
+//                        .addToBackStack(null)
+//                        .commit();
+                Navigation.findNavController(v).navigate(R.id.action_welcomeScreenFragment_to_loginFragment);
             }
         });
     }

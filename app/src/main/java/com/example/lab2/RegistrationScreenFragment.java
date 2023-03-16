@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import com.example.lab2.databinding.FragmentRegistrationScreenBinding;
 
@@ -27,9 +28,7 @@ public class RegistrationScreenFragment extends Fragment {
         binding.acc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                requireActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.main_container, LoginFragment.class, null)
-                        .commit();
+                Navigation.findNavController(v).navigate(R.id.action_registrationScreenFragment_to_loginFragment);
             }
         });
         binding.button.setOnClickListener(new View.OnClickListener() {
@@ -37,9 +36,7 @@ public class RegistrationScreenFragment extends Fragment {
             public void onClick(View v) {
                 String Phone = binding.textPhone.getText().toString();
                 String Password = binding.password.getText().toString();
-                requireActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.main_container, LoginFragment.newInstance(Phone, Password), null)
-                        .commit();
+                Navigation.findNavController(v).navigate(R.id.action_registrationScreenFragment_to_loginFragment);
             }
         });
     }
