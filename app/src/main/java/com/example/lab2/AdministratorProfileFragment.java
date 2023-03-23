@@ -1,5 +1,10 @@
 package com.example.lab2;
 
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +12,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.lab2.databinding.FragmentAdministratorProfileBinding;
@@ -16,6 +22,7 @@ import java.util.List;
 
 public class AdministratorProfileFragment extends Fragment {
     private FragmentAdministratorProfileBinding binding;
+    private final static String CHANNEL_ID = "Sales";
 
     @Nullable
     @Override
@@ -30,6 +37,35 @@ public class AdministratorProfileFragment extends Fragment {
         List<ProfileSettingListItem> items = initSettings();
         SettingsRecyclerViewAdapter adapter = new SettingsRecyclerViewAdapter(items);
         binding.settingsList.setAdapter(adapter);
+
+        // Создание канала уведомлений
+        NotificationChannel channel = new NotificationChannel(
+                CHANNEL_ID,
+                "sales",
+                NotificationManager.IMPORTANCE_DEFAULT
+        );
+
+        NotificationManager notificationManager =
+                (NotificationManager) requireContext().getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.createNotificationChannel(channel);
+
+        binding.notifyButt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Создание уведомления
+                Notification notification = new NotificationCompat.Builder(requireContext(), CHANNEL_ID)
+                        .setSmallIcon(R.drawable.ic_baseline_notifications_24)
+                        .setContentText("Скидка на товар 20%")
+                        .setContentTitle("Акция")
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                        .build();
+
+                NotificationManager notificationManager =
+                        (NotificationManager) requireContext().getSystemService(Context.NOTIFICATION_SERVICE);
+
+                notificationManager.notify(1, notification);
+            }
+        });
     }
 
     private List<ProfileSettingListItem> initSettings() {
@@ -71,4 +107,5 @@ public class AdministratorProfileFragment extends Fragment {
         ));
         return items;
     }
+
 }
