@@ -59,7 +59,6 @@ public class LoginFragment extends Fragment {
     }
 
 
-    // Получаем данные из другого фрагмента
     private void pars (){
         Bundle bundle = this.getArguments();
         if (bundle != null){
