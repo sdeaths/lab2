@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/welcomeScreenFragment"
-        android:name="com.example.lab2.WelcomeScreenFragment"
+        android:name="com.example.lab2.ui.WelcomeScreenFragment"
         android:label="WelcomeScreenFragment"
         tools:layout="@layout/fragment_welcome_screen">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.lab2.LoginFragment"
+        android:name="com.example.lab2.ui.LoginFragment"
         android:label="LoginFragment"
         tools:layout="@layout/fragment_login">
         <action
@@ -34,12 +34,12 @@
     </fragment>
     <fragment
         android:id="@+id/userProfileFragment"
-        android:name="com.example.lab2.UserProfileFragment"
+        android:name="com.example.lab2.ui.UserProfileFragment"
         android:label="UserProfileFragment"
         tools:layout="@layout/fragment_user_profile"/>
     <fragment
         android:id="@+id/administratorLoginFragment"
-        android:name="com.example.lab2.AdministratorLoginFragment"
+        android:name="com.example.lab2.ui.AdministratorLoginFragment"
         android:label="AdministratorLoginFragment"
         tools:layout="@layout/fragment_administrator_login">
         <action
@@ -49,12 +49,12 @@
     </fragment>
     <fragment
         android:id="@+id/administratorProfileFragment"
-        android:name="com.example.lab2.AdministratorProfileFragment"
+        android:name="com.example.lab2.ui.AdministratorProfileFragment"
         android:label="AdministratorProfileFragment"
         tools:layout="@layout/fragment_administrator_profile"/>
     <fragment
         android:id="@+id/registrationScreenFragment"
-        android:name="com.example.lab2.RegistrationScreenFragment"
+        android:name="com.example.lab2.ui.RegistrationScreenFragment"
         android:label="RegistrationScreenFragment"
         tools:layout="@layout/fragment_registration_screen">
         <action
