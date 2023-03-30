@@ -5,7 +5,6 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +16,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.lab2.databinding.FragmentAdministratorProfileBinding;
+import com.example.lab2.domain.entity.ProfileSettingListItem;
 
 import java.util.ArrayList;
 import java.util.List;

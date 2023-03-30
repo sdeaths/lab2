@@ -10,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.lab2.databinding.FragmentUserProfileBinding;
+import com.example.lab2.domain.entity.ProfileSettingListItem;
 
 import java.util.ArrayList;
 import java.util.List;
