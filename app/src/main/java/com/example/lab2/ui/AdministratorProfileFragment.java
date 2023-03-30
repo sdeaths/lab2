@@ -1,11 +1,10 @@
-package com.example.lab2;
+package com.example.lab2.ui;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,11 @@ import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
 
+import com.example.lab2.R;
+import com.example.lab2.SaleService;
 import com.example.lab2.databinding.FragmentAdministratorProfileBinding;
+import com.example.lab2.domain.entity.ProfileSettingListItem;
+import com.example.lab2.ui.stateholder.SettingsRecyclerViewAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
