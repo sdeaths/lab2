@@ -1,21 +1,14 @@
-package com.example.lab2.domain.entity;
+package com.example.lab2.data.models;
 
-public class RegistrationUser {
-
-    private final String name;
+public class LoginUser {
 
     private final String phone;
 
     private final String password;
 
-    public RegistrationUser(String name, String phone, String password) {
-        this.name = name;
+    public LoginUser(String phone, String password) {
         this.phone = phone;
         this.password = password;
-    }
-
-    public String getName() {
-        return name;
     }
 
     public String getPhone() {

@@ -1,4 +1,4 @@
-package com.example.lab2.ui;
+package com.example.lab2.ui.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,15 +11,15 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.example.lab2.R;
-import com.example.lab2.databinding.FragmentAdministratorLoginBinding;
+import com.example.lab2.databinding.FragmentWelcomeScreenBinding;
 
-public class AdministratorLoginFragment extends Fragment {
-    private FragmentAdministratorLoginBinding binding;
+public class WelcomeScreenFragment extends Fragment {
+    private FragmentWelcomeScreenBinding binding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        binding = FragmentAdministratorLoginBinding.inflate(inflater, container, false);
+        binding = FragmentWelcomeScreenBinding.inflate(inflater, container, false);
         return binding.getRoot();
     }
 
@@ -29,7 +29,11 @@ public class AdministratorLoginFragment extends Fragment {
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(v).navigate(R.id.action_administratorLoginFragment_to_administratorProfileFragment);
+//                requireActivity().getSupportFragmentManager().beginTransaction()
+//                        .replace(R.id.main_container, LoginFragment.class, null)
+//                        .addToBackStack(null)
+//                        .commit();
+                Navigation.findNavController(v).navigate(R.id.action_welcomeScreenFragment_to_loginFragment);
             }
         });
     }
