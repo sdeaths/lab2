@@ -1,4 +1,4 @@
-package com.example.lab2.ui;
+package com.example.lab2.ui.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,16 +9,20 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.lab2.R;
 import com.example.lab2.databinding.FragmentLoginBinding;
+import com.example.lab2.ui.stateholder.viewmodels.LoginViewModel;
 
 public class LoginFragment extends Fragment {
     private FragmentLoginBinding binding;
     public static final String KEYT = "telephone";
     public static final String KEYP = "password";
     public static final String KEY_RESULT = "result";
+
+    private LoginViewModel viewModel;
 
     @Nullable
     @Override
@@ -29,6 +33,7 @@ public class LoginFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         super.onViewCreated(view, savedInstanceState);
         pars();
         binding.acc.setOnClickListener(new View.OnClickListener() {
@@ -40,7 +45,11 @@ public class LoginFragment extends Fragment {
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_userProfileFragment);
+                if (viewModel.loginAccount(
+                        binding.textPhone.getText().toString(),
+                        binding.password.getText().toString()
+                ))
+                    Navigation.findNavController(v).navigate(R.id.action_loginFragment_to_userProfileFragment);
             }
         });
         getParentFragmentManager().setFragmentResultListener(KEY_RESULT, this, new FragmentResultListener() {

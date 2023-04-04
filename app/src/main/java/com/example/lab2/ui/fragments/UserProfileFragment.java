@@ -1,4 +1,4 @@
-package com.example.lab2.ui;
+package com.example.lab2.ui.fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,18 +8,23 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import com.example.lab2.R;
 import com.example.lab2.databinding.FragmentUserProfileBinding;
-import com.example.lab2.domain.entity.ProfileSettingListItem;
+import com.example.lab2.data.models.ProfileSettingListItem;
 import com.example.lab2.ui.stateholder.SettingsRecyclerViewAdapter;
+import com.example.lab2.ui.stateholder.viewmodels.UserProfileViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserProfileFragment extends Fragment {
     private FragmentUserProfileBinding binding;
-
+    private UserProfileViewModel viewModel;
+    public static String KEY_POS = "pos";
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -29,10 +34,31 @@ public class UserProfileFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        viewModel = new ViewModelProvider(this).get(UserProfileViewModel.class);
         super.onViewCreated(view, savedInstanceState);
-        List<ProfileSettingListItem> items = initSettings();
-        SettingsRecyclerViewAdapter adapter = new SettingsRecyclerViewAdapter(items);
-        binding.settingsList.setAdapter(adapter);
+
+        viewModel.listLiveData.observe(getViewLifecycleOwner(), new Observer<List<ProfileSettingListItem>>() {
+            @Override
+            public void onChanged(List<ProfileSettingListItem> profileSettingListItems) {
+                SettingsRecyclerViewAdapter adapter = new SettingsRecyclerViewAdapter(profileSettingListItems);
+                adapter.onSettingItemListClickListener = new SettingsRecyclerViewAdapter.OnSettingItemListClickListener() {
+                    @Override
+                    public void onSettingItemListClickListener(int position) {
+                        Bundle bundle = new Bundle();
+                        bundle.putInt(KEY_POS, position);
+                        if (!profileSettingListItems.get(position).isTitle()) {
+                            Navigation.findNavController(requireView())
+                                    .navigate(R.id.action_userProfileFragment_to_settingsProfileListItem, bundle);
+                        }
+                    }
+                };
+                binding.settingsList.setAdapter(adapter);
+            }
+        });
+
+
+
+
     }
 
     @NonNull

@@ -17,4 +17,5 @@
     <string name="admKey">Ключ</string>
     <string name="adm">Администратор</string>
     <string name="profile">Профиль</string>
+    <string name="properties">Подробности</string>
 </resources>
