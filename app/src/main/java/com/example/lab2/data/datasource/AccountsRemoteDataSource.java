@@ -1,8 +1,8 @@
 package com.example.lab2.data.datasource;
 
-import com.example.lab2.domain.entity.LoginAdministrator;
-import com.example.lab2.domain.entity.LoginUser;
-import com.example.lab2.domain.entity.RegistrationUser;
+import com.example.lab2.data.models.LoginAdministrator;
+import com.example.lab2.data.models.LoginUser;
+import com.example.lab2.data.models.RegistrationUser;
 
 public class AccountsRemoteDataSource {
 

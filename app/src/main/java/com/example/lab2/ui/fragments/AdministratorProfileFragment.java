@@ -1,4 +1,4 @@
-package com.example.lab2.ui;
+package com.example.lab2.ui.fragments;
 
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -14,11 +14,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.lab2.R;
 import com.example.lab2.SaleService;
 import com.example.lab2.databinding.FragmentAdministratorProfileBinding;
-import com.example.lab2.domain.entity.ProfileSettingListItem;
+import com.example.lab2.data.models.ProfileSettingListItem;
+import com.example.lab2.ui.stateholder.viewmodels.AdministratorProfileViewModel;
 import com.example.lab2.ui.stateholder.SettingsRecyclerViewAdapter;
 
 import java.util.ArrayList;
@@ -27,6 +30,9 @@ import java.util.List;
 public class AdministratorProfileFragment extends Fragment {
     private FragmentAdministratorProfileBinding binding;
     private final static String CHANNEL_ID = "Sales";
+
+    private AdministratorProfileViewModel viewModel;
+
 
     @Nullable
     @Override
@@ -37,10 +43,21 @@ public class AdministratorProfileFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        viewModel = new ViewModelProvider(this).get(AdministratorProfileViewModel.class);
         super.onViewCreated(view, savedInstanceState);
-        List<ProfileSettingListItem> items = initSettings();
-        SettingsRecyclerViewAdapter adapter = new SettingsRecyclerViewAdapter(items);
-        binding.settingsList.setAdapter(adapter);
+        viewModel.listLiveData.observe(getViewLifecycleOwner(), new Observer<List<ProfileSettingListItem>>() {
+            @Override
+            public void onChanged(List<ProfileSettingListItem> profileSettingListItems) {
+                SettingsRecyclerViewAdapter adapter = new SettingsRecyclerViewAdapter(profileSettingListItems);
+                adapter.onSettingItemListClickListener = new SettingsRecyclerViewAdapter.OnSettingItemListClickListener() {
+                    @Override
+                    public void onSettingItemListClickListener(int position) {
+                    }
+                };
+                binding.settingsList.setAdapter(adapter);
+            }
+        });
+
 
         // Создание канала уведомлений
         NotificationChannel channel = new NotificationChannel(

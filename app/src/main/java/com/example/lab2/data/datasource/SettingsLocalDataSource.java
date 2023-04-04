@@ -1,15 +1,20 @@
 package com.example.lab2.data.datasource;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.lab2.R;
-import com.example.lab2.domain.entity.ProfileSettingListItem;
+import com.example.lab2.data.models.ProfileSettingListItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class SettingsLocalDataSource {
 
-    public List<ProfileSettingListItem> getUserListSettings() {
-        List<ProfileSettingListItem> items = new ArrayList<>();
+    List<ProfileSettingListItem> items = new ArrayList<>();
+
+    public LiveData<List<ProfileSettingListItem>> getUserListSettings() {
         items.add(new ProfileSettingListItem(
                 0,
                 "Мой Аккаунт",
@@ -50,46 +55,57 @@ public class SettingsLocalDataSource {
                 "Акции и уведомления",
                 false
         ));
-        return items;
+        MutableLiveData<List<ProfileSettingListItem>> mutableLiveData = new MutableLiveData<>();
+        mutableLiveData.setValue(items);
+        return mutableLiveData;
     }
 
-    public List<ProfileSettingListItem> getAdminListSettings() {
-        List<ProfileSettingListItem> items = new ArrayList<>();
-        items.add(new ProfileSettingListItem(
+    public LiveData<List<ProfileSettingListItem>> getAdminListSettings() {
+        List<ProfileSettingListItem> adminItems = new ArrayList<>();
+        adminItems.add(new ProfileSettingListItem(
                 0,
                 "Администратор",
                 true
         ));
-        items.add(new ProfileSettingListItem(
+        adminItems.add(new ProfileSettingListItem(
                 R.drawable.location,
                 "Категории",
                 false
         ));
-        items.add(new ProfileSettingListItem(
+        adminItems.add(new ProfileSettingListItem(
                 R.drawable.card,
                 "Продукты",
                 false
         ));
-        items.add(new ProfileSettingListItem(
+        adminItems.add(new ProfileSettingListItem(
                 R.drawable.box,
                 "Заказы",
                 false
         ));
-        items.add(new ProfileSettingListItem(
+        adminItems.add(new ProfileSettingListItem(
                 R.drawable.logout,
                 "Выход",
                 false
         ));
-        items.add(new ProfileSettingListItem(
+        adminItems.add(new ProfileSettingListItem(
                 0,
                 "Уведомления",
                 true
         ));
-        items.add(new ProfileSettingListItem(
+        adminItems.add(new ProfileSettingListItem(
                 R.drawable.notification,
                 "Настройки уведомлений",
                 false
         ));
-        return items;
+        MutableLiveData<List<ProfileSettingListItem>> mutableLiveData = new MutableLiveData<>();
+        mutableLiveData.setValue(adminItems);
+        return mutableLiveData;
+    }
+
+    public LiveData<ProfileSettingListItem> getProfileItem(int position) {
+        getUserListSettings();
+        MutableLiveData<ProfileSettingListItem> data = new MutableLiveData<>();
+        data.setValue(items.get(position));
+        return data;
     }
 }

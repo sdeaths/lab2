@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lab2.R;
-import com.example.lab2.domain.entity.ProfileSettingListItem;
+import com.example.lab2.data.models.ProfileSettingListItem;
 
 import java.util.List;
 
@@ -18,7 +18,7 @@ public class SettingsRecyclerViewAdapter extends RecyclerView.Adapter<SettingsRe
 
     private static final int TITLE = 100;
     private static final int NON_TITLE = 101;
-
+    public OnSettingItemListClickListener onSettingItemListClickListener = null;
     private List<ProfileSettingListItem> items;
 
     public SettingsRecyclerViewAdapter(List<ProfileSettingListItem> items) {
@@ -46,6 +46,12 @@ public class SettingsRecyclerViewAdapter extends RecyclerView.Adapter<SettingsRe
         ProfileSettingListItem item = items.get(position);
         holder.textView.setText(item.getSettingsTitle());
         holder.imageView.setImageResource(item.getSettingIcon());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onSettingItemListClickListener.onSettingItemListClickListener(holder.getAdapterPosition());
+            }
+        });
     }
 
     @Override
@@ -74,5 +80,9 @@ public class SettingsRecyclerViewAdapter extends RecyclerView.Adapter<SettingsRe
             textView = itemView.findViewById(R.id.settingsTitle);
             imageView = itemView.findViewById(R.id.settingIcon);
         }
+    }
+
+    public interface OnSettingItemListClickListener {
+        void onSettingItemListClickListener(int position);
     }
 }
