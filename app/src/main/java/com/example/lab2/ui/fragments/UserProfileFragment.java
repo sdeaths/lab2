@@ -8,18 +8,22 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 
 import com.example.lab2.R;
 import com.example.lab2.databinding.FragmentUserProfileBinding;
 import com.example.lab2.data.models.ProfileSettingListItem;
 import com.example.lab2.ui.stateholder.SettingsRecyclerViewAdapter;
+import com.example.lab2.ui.stateholder.UserProfileViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class UserProfileFragment extends Fragment {
     private FragmentUserProfileBinding binding;
-
+    private UserProfileViewModel viewModel;
+    public static String KEY_POS = "pos";
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -29,10 +33,21 @@ public class UserProfileFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        viewModel = new ViewModelProvider(this).get(UserProfileViewModel.class);
         super.onViewCreated(view, savedInstanceState);
         List<ProfileSettingListItem> items = initSettings();
         SettingsRecyclerViewAdapter adapter = new SettingsRecyclerViewAdapter(items);
+        adapter.onSettingItemListClickListener = new SettingsRecyclerViewAdapter.OnSettingItemListClickListener() {
+            @Override
+            public void onSettingItemListClickListener(int position) {
+                Bundle bundle = new Bundle();
+                bundle.putInt(KEY_POS, position);
+                Navigation.findNavController(requireView())
+                        .navigate(R.id.action_userProfileFragment_to_settingsProfileListItem, bundle);
+            }
+        };
         binding.settingsList.setAdapter(adapter);
+
     }
 
     @NonNull

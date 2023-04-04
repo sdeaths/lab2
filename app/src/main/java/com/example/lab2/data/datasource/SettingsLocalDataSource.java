@@ -103,6 +103,7 @@ public class SettingsLocalDataSource {
     }
 
     public LiveData<ProfileSettingListItem> getProfileItem(int position) {
+        getUserListSettings();
         MutableLiveData<ProfileSettingListItem> data = new MutableLiveData<>();
         data.setValue(items.get(position));
         return data;
