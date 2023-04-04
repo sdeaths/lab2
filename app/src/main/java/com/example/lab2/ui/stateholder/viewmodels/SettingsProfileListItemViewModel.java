@@ -1,4 +1,4 @@
-package com.example.lab2.ui.stateholder;
+package com.example.lab2.ui.stateholder.viewmodels;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;

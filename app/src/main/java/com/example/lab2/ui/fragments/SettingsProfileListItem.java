@@ -13,7 +13,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.lab2.data.models.ProfileSettingListItem;
 import com.example.lab2.databinding.ItemSettingsProfileListBinding;
-import com.example.lab2.ui.stateholder.SettingsProfileListItemViewModel;
+import com.example.lab2.ui.stateholder.viewmodels.SettingsProfileListItemViewModel;
 
 public class SettingsProfileListItem extends Fragment {
 
