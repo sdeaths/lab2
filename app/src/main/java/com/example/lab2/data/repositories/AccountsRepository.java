@@ -1,5 +1,7 @@
 package com.example.lab2.data.repositories;
 
+import android.content.Context;
+
 import com.example.lab2.data.protocols.AccountsProtocol;
 import com.example.lab2.data.datasource.AccountsRemoteDataSource;
 import com.example.lab2.data.models.LoginAdministrator;
@@ -7,8 +9,13 @@ import com.example.lab2.data.models.LoginUser;
 import com.example.lab2.data.models.RegistrationUser;
 
 public class AccountsRepository implements AccountsProtocol {
+    private final Context context;
+    private final AccountsRemoteDataSource dataSource;
 
-    private final AccountsRemoteDataSource dataSource = new AccountsRemoteDataSource();
+    public AccountsRepository(Context context) {
+        this.context = context;
+        dataSource = new AccountsRemoteDataSource(context);
+    }
 
     @Override
     public boolean adminLogin(LoginAdministrator loginAdministrator) {
