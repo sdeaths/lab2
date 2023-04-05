@@ -1,18 +1,26 @@
 package com.example.lab2.data.datasource;
 
+import android.content.Context;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.lab2.R;
-import com.example.lab2.data.models.ProfileSettingListItem;
+import com.example.lab2.data.database.SettingsDataBase;
+import com.example.lab2.data.database.dao.ProfileSettingDao;
+import com.example.lab2.data.database.entity.ProfileSettingListItem;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class SettingsLocalDataSource {
-
+    private final Context context;
     List<ProfileSettingListItem> items = new ArrayList<>();
+
+    public SettingsLocalDataSource(Context context) {
+        this.context = context;
+    }
 
     public LiveData<List<ProfileSettingListItem>> getUserListSettings() {
         items.add(new ProfileSettingListItem(
@@ -57,7 +65,14 @@ public class SettingsLocalDataSource {
         ));
         MutableLiveData<List<ProfileSettingListItem>> mutableLiveData = new MutableLiveData<>();
         mutableLiveData.setValue(items);
-        return mutableLiveData;
+        SettingsDataBase db = SettingsDataBase.getDatabase(context);
+        ProfileSettingDao profileSettingDao = db.profileSettingDao();
+//        db.getQueryExecutor().execute(() -> {
+//            for (ProfileSettingListItem setting : items) {
+//                profileSettingDao.insert(setting);
+//            }
+//        });
+        return profileSettingDao.getProfileSettingList();
     }
 
     public LiveData<List<ProfileSettingListItem>> getAdminListSettings() {
@@ -103,9 +118,8 @@ public class SettingsLocalDataSource {
     }
 
     public LiveData<ProfileSettingListItem> getProfileItem(int position) {
-        getUserListSettings();
-        MutableLiveData<ProfileSettingListItem> data = new MutableLiveData<>();
-        data.setValue(items.get(position));
-        return data;
+        SettingsDataBase db = SettingsDataBase.getDatabase(context);
+        ProfileSettingDao profileSettingDao = db.profileSettingDao();
+        return profileSettingDao.getItem(position + 1);
     }
 }

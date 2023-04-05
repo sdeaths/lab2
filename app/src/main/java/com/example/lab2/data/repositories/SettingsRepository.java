@@ -1,16 +1,23 @@
 package com.example.lab2.data.repositories;
 
+import android.content.Context;
+
 import androidx.lifecycle.LiveData;
 
 import com.example.lab2.data.protocols.SettingsProtocol;
 import com.example.lab2.data.datasource.SettingsLocalDataSource;
-import com.example.lab2.data.models.ProfileSettingListItem;
+import com.example.lab2.data.database.entity.ProfileSettingListItem;
 
 import java.util.List;
 
 public class SettingsRepository implements SettingsProtocol {
+    private final Context context;
+    private final SettingsLocalDataSource dataSource;
 
-    private final SettingsLocalDataSource dataSource = new SettingsLocalDataSource();
+    public SettingsRepository(Context context) {
+        this.context = context;
+        dataSource = new SettingsLocalDataSource(context);
+    }
 
     @Override
     public LiveData<List<ProfileSettingListItem>> getUserSettingsList() {
