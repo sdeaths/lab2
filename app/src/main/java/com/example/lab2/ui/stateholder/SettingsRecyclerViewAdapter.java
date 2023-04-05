@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.lab2.R;
-import com.example.lab2.data.models.ProfileSettingListItem;
+import com.example.lab2.data.database.entity.ProfileSettingListItem;
 
 import java.util.List;
 

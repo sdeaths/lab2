@@ -6,7 +6,7 @@ import com.example.lab2.data.models.RegistrationUser;
 
 public interface AccountsProtocol {
 
-    boolean adminLogin(LoginAdministrator loginAdministrator);
+    boolean adminLogin(LoginAdministrator loginAdministrator, boolean allowed);
 
     boolean userLogin(LoginUser loginUser);
 

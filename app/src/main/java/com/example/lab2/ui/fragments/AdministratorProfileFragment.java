@@ -20,7 +20,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.lab2.R;
 import com.example.lab2.SaleService;
 import com.example.lab2.databinding.FragmentAdministratorProfileBinding;
-import com.example.lab2.data.models.ProfileSettingListItem;
+import com.example.lab2.data.database.entity.ProfileSettingListItem;
 import com.example.lab2.ui.stateholder.viewmodels.AdministratorProfileViewModel;
 import com.example.lab2.ui.stateholder.SettingsRecyclerViewAdapter;
 
