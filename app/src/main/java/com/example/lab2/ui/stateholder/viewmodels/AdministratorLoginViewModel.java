@@ -17,9 +17,9 @@ public class AdministratorLoginViewModel extends AndroidViewModel {
         super(application);
     }
 
-    public boolean loginAccount(String login, String pass) {
+    public boolean loginAccount(String login, String pass, boolean allowed) {
         LoginAdministrator administrator = new LoginAdministrator(login, pass);
-        return repository.adminLogin(administrator);
+        return repository.adminLogin(administrator, allowed);
     }
 
 }

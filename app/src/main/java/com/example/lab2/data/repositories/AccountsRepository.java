@@ -18,8 +18,8 @@ public class AccountsRepository implements AccountsProtocol {
     }
 
     @Override
-    public boolean adminLogin(LoginAdministrator loginAdministrator) {
-        return dataSource.checkLoginAdminValid(loginAdministrator);
+    public boolean adminLogin(LoginAdministrator loginAdministrator, boolean allowed) {
+        return dataSource.checkLoginAdminValid(loginAdministrator, allowed);
     }
 
     @Override

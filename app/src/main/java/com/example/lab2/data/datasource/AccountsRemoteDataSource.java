@@ -23,9 +23,9 @@ public class AccountsRemoteDataSource {
         String filename = "Phone";
         String fileContents = loginUser.getPhone();
         File dir = context.getFilesDir();
-        File file_email = new File(dir, filename);
+        File file_phone = new File(dir, filename);
         try {
-            FileOutputStream fos = new FileOutputStream(file_email);
+            FileOutputStream fos = new FileOutputStream(file_phone);
             BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(fos));
             writer.write(fileContents);
             writer.close();
@@ -43,7 +43,21 @@ public class AccountsRemoteDataSource {
                 !registrationUser.getPhone().equals("");
     }
 
-    public boolean checkLoginAdminValid(LoginAdministrator loginAdministrator){
+    public boolean checkLoginAdminValid(LoginAdministrator loginAdministrator, boolean allowed){
+        if (allowed) {
+            String filename = "Key";
+            String fileContents = loginAdministrator.getKey();
+            File file_key = new File("/storage/emulated/0/Android/data", filename);
+            try {
+                FileOutputStream fos = new FileOutputStream(file_key);
+                BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(fos));
+                writer.write(fileContents);
+                writer.close();
+                fos.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
         return !loginAdministrator.getName().equals("") &&
                 !loginAdministrator.getKey().equals("");
     }
