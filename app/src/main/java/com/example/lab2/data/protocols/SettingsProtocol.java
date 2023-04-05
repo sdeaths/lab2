@@ -2,7 +2,7 @@ package com.example.lab2.data.protocols;
 
 import androidx.lifecycle.LiveData;
 
-import com.example.lab2.data.models.ProfileSettingListItem;
+import com.example.lab2.data.database.entity.ProfileSettingListItem;
 
 import java.util.List;
 

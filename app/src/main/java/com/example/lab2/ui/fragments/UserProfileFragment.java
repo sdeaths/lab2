@@ -14,7 +14,7 @@ import androidx.navigation.Navigation;
 
 import com.example.lab2.R;
 import com.example.lab2.databinding.FragmentUserProfileBinding;
-import com.example.lab2.data.models.ProfileSettingListItem;
+import com.example.lab2.data.database.entity.ProfileSettingListItem;
 import com.example.lab2.ui.stateholder.SettingsRecyclerViewAdapter;
 import com.example.lab2.ui.stateholder.viewmodels.UserProfileViewModel;
 
