@@ -69,21 +69,28 @@ public class LoginFragment extends Fragment {
     }
 
 
-    private void pars (){
+    private void pars() {
         Bundle bundle = this.getArguments();
-        if (bundle != null){
-            String Phone = bundle.getString(KEYT);
-            String Password = bundle.getString(KEYP);
-            binding.textPhone.setText(Phone);
-            binding.password.setText(Password);
+        if (bundle != null) {
+            if (bundle.getString(KEYT) == null) {
+                String Phone = bundle.getString(KEYT);
+                String Password = bundle.getString(KEYP);
+                binding.textPhone.setText(Phone);
+                binding.password.setText(Password);
+            }
+            else{
+                String Phone = bundle.getString(KEYT);
+                binding.textPhone.setText(Phone);
+            }
         }
     }
-    public static LoginFragment newInstance (String Phone, String Password){
+
+    public static LoginFragment newInstance(String Phone, String Password) {
         LoginFragment loginFragment = new LoginFragment();
         Bundle bundle = new Bundle();
         bundle.putString(KEYT, Phone);
         bundle.putString(KEYP, Password);
         loginFragment.setArguments(bundle);
-        return  loginFragment;
+        return loginFragment;
     }
 }
