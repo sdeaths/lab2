@@ -1,5 +1,6 @@
 package com.example.lab2.ui.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,10 +56,16 @@ public class UserProfileFragment extends Fragment {
                 binding.settingsList.setAdapter(adapter);
             }
         });
-
-
-
-
+        binding.share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent textIntent = new Intent(Intent.ACTION_SEND);
+                textIntent.setType("text/plain");
+                textIntent.putExtra(Intent.EXTRA_SUBJECT, "My profile");
+                textIntent.putExtra(Intent.EXTRA_TEXT, "https://LizaShop.ru/User");
+                requireActivity().startActivity(textIntent);
+            }
+        });
     }
 
     @NonNull
