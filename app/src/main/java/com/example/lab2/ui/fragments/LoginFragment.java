@@ -1,6 +1,8 @@
 package com.example.lab2.ui.fragments;
 
+import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +37,13 @@ public class LoginFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
         super.onViewCreated(view, savedInstanceState);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                AnimatedVectorDrawable drawable = (AnimatedVectorDrawable) binding.imageView.getDrawable();
+                drawable.start();
+            }
+        }, 2000);
         pars();
         binding.acc.setOnClickListener(new View.OnClickListener() {
             @Override

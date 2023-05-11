@@ -11,7 +11,11 @@
         tools:layout="@layout/fragment_welcome_screen">
         <action
             android:id="@+id/action_welcomeScreenFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/fade_in_right"
+            app:popExitAnim="@anim/fade_out_left" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -21,14 +25,26 @@
         <action
             android:id="@+id/action_loginFragment_to_userProfileFragment"
             app:destination="@id/userProfileFragment"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/fade_in_right"
+            app:popExitAnim="@anim/fade_out_left"
             app:popUpTo="@id/loginFragment" />
         <action
             android:id="@+id/action_loginFragment_to_administratorLoginFragment"
             app:destination="@id/administratorLoginFragment"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/fade_in_right"
+            app:popExitAnim="@anim/fade_out_left"
             app:popUpTo="@id/loginFragment" />
         <action
             android:id="@+id/action_loginFragment_to_registrationScreenFragment"
             app:destination="@id/registrationScreenFragment"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/fade_in_right"
+            app:popExitAnim="@anim/fade_out_left"
             app:popUpTo="@id/loginFragment" />
     </fragment>
     <fragment
@@ -38,7 +54,11 @@
         tools:layout="@layout/fragment_user_profile">
         <action
             android:id="@+id/action_userProfileFragment_to_settingsProfileListItem"
-            app:destination="@id/settingsProfileListItem" />
+            app:destination="@id/settingsProfileListItem"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/fade_in_right"
+            app:popExitAnim="@anim/fade_out_left" />
     </fragment>
     <fragment
         android:id="@+id/administratorLoginFragment"
@@ -48,6 +68,10 @@
         <action
             android:id="@+id/action_administratorLoginFragment_to_administratorProfileFragment"
             app:destination="@id/administratorProfileFragment"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/fade_in_right"
+            app:popExitAnim="@anim/fade_out_left"
             app:popUpTo="@id/loginFragment" />
     </fragment>
     <fragment
@@ -63,6 +87,10 @@
         <action
             android:id="@+id/action_registrationScreenFragment_to_loginFragment"
             app:destination="@id/loginFragment"
+            app:enterAnim="@anim/fade_in_right"
+            app:exitAnim="@anim/fade_out_left"
+            app:popEnterAnim="@anim/fade_in_right"
+            app:popExitAnim="@anim/fade_out_left"
             app:popUpTo="@id/loginFragment" />
     </fragment>
     <fragment
