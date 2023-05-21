@@ -3,6 +3,7 @@ package com.example.lab2.ui.fragments;
 import android.graphics.drawable.AnimatedVectorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,12 +12,16 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentResultListener;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 
 import com.example.lab2.R;
+import com.example.lab2.data.API.PlaceHolderPost;
 import com.example.lab2.databinding.FragmentLoginBinding;
 import com.example.lab2.ui.stateholder.viewmodels.LoginViewModel;
+
+import java.util.List;
 
 public class LoginFragment extends Fragment {
     private FragmentLoginBinding binding;
@@ -36,6 +41,24 @@ public class LoginFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(this).get(LoginViewModel.class);
+        viewModel.getListPostLiveData().observe(getViewLifecycleOwner(), new Observer<List<PlaceHolderPost>>() {
+            @Override
+            public void onChanged(List<PlaceHolderPost> placeHolderPosts) {
+                Log.d("MyLogs", placeHolderPosts.get(2).getTitle());
+            }
+        });
+        viewModel.getPostLiveData().observe(getViewLifecycleOwner(), new Observer<PlaceHolderPost>() {
+            @Override
+            public void onChanged(PlaceHolderPost placeHolderPost) {
+                Log.d("MyLogs", placeHolderPost.getTitle());
+            }
+        });
+        viewModel.getPushPostLiveData().observe(getViewLifecycleOwner(), new Observer<PlaceHolderPost>() {
+            @Override
+            public void onChanged(PlaceHolderPost placeHolderPost) {
+                Log.d("MyLogs", placeHolderPost.getTitle());
+            }
+        });
         super.onViewCreated(view, savedInstanceState);
         new Handler().postDelayed(new Runnable() {
             @Override
